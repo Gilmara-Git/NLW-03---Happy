@@ -1,0 +1,59 @@
+#page-landing {
+  background: linear-gradient(329.54deg, #29b6d1 0%, #00c7c7 100%);
+  min-height: 100vh;
+  text-align: center;
+  display: flex; /*There is just one BOX inside page-landing (container)*/
+}
+
+#container {
+  margin: auto; /*This margin only applies because DAD element is flex. Otherwise only margin on the side would be applied*/
+  width: 90%;
+}
+
+.location,
+h1,
+.visit p {
+  /*Apply this height we give a vertical space between the items*/
+
+  height: 16vh;
+}
+
+.visit a {
+  height: 8rem;
+  width: 8rem;
+  background: #ffd666;
+  border: none;
+  border-radius: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto; /*As element PAI (visit) is not display Flex margin-top does not work, only on the sides work - It is the same as margin: 0 auto*/
+  transition: 200ms;
+}
+
+.visit a:hover {
+  background:#96feff;;
+}
+
+/*Animations*/
+/* We apply the class animation-up (@keyframes up) on elements(Logo, location, section p and section a, */
+/* But we want this animation to be applied to them in different order*/
+
+#logo {
+  animation-delay: 50ms;
+}
+
+.location {
+  animation-delay: 100ms;
+}
+
+.main h1 {
+  animation-delay: 150ms;
+}
+
+.visit p {
+  animation-delay: 200ms;
+}
+.visit a {
+  animation-delay: 250ms;
+}

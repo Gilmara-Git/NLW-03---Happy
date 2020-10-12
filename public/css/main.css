@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;800&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    border: 0;
+
+}
+
+body{
+    
+    height: 100vh;
+    color: white;
+    
+}
+
+:root {
+
+    font-size:62.5%; /* We can change this on MOBILE*/
+    
+}
+
+body, 
+input, 
+button, 
+textarea { /*We need to specify all, otherwise user agent will not consider it*/
+
+    font: 400 1.8rem/1 'Nunito', sans-serif; /*Shorthand for font (weight , size/line-height , name)*/
+
+}
+
