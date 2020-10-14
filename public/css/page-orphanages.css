@@ -121,3 +121,7 @@ a.create-orphanage:hover {
     z-index: 5; /*position relative enable z-index option*/
 }
 
+.leaflet-popup-content { 
+
+    font: 700 2rem/1 'Nunito', sans-serif;
+}
