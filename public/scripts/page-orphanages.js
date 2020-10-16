@@ -9,30 +9,57 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png')
 
 // create ICON  - It is on the documentation how to do it. 
  const icon = L.icon({
-     iconUrl: "./public/images/map-marker.svg",
+     iconUrl: "/images/map-marker.svg",
      iconSize: [58, 68],
      iconAnchor: [29, 68],
      popupAnchor: [170, 2]
  })
 
 
-//create pop-up overlay - property and values are in the documentation
- const popup = L.popup({
-    closeButton: false,
-    className: 'map-popup',
-    minWidth: 240,
-    minHeight:240
- }).setContent('Lar das meninas <a href="orphanage.html?id=1" class="choose-orphanage"> <img src="./public/images/arrow-white.svg"></a>')
+ function addMarker({id, name, lat, lng}){
+    //create pop-up overlay - property and values are in the documentation
+    const popup = L.popup({
+        closeButton: false,
+        className: 'map-popup',
+    }).setContent(`${name}<a href="/orphanage?id=${id}"><img src="/images/arrow-white.svg"></a>`)
+
+    //create and ADD marker
+    L
+    .marker([lat,lng ], {icon} )
+    .addTo(map)
+    .bindPopup(popup)
+ }
 
 
+ const orphanagesSpan = document.querySelectorAll('.orphanages span')
+ 
+ //const spans = document.querySelectorAll('.orphanages span')  
+//  for (let span of spans){    
+//         const orphanage = {
+//                     id: span.dataset.id,
+//                     name: span.dataset.name,
+//                     lat: span.dataset.lat, 
+//                     lng: span.dataset.lng
+//                 }
+//         console.log(orphanage)
+//         addMarker(orphanage)
+//     }
+   
 
-//create and ADD marker
-L
-.marker([-27.2143428,-49.6388383],{icon})
-.addTo(map)
-.bindPopup(popup)
+    
+    orphanagesSpan.forEach( span => {
+        const orphanage = {
+            id: span.dataset.id,
+            name: span.dataset.name,
+            lat: span.dataset.lat, 
+            lng: span.dataset.lng
+        }
+        addMarker(orphanage)
+        
+   })
 
+    
 
-
+        
 
 

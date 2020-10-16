@@ -50,7 +50,7 @@ a.create-orphanage {
     right: 4rem;
     bottom: 4rem;
 
-    z-index: 1000; /*z-index 10 here and 5 in the leaflet-container did not work*/
+    z-index: 401; /*z-index 10 here and 5 in the leaflet-container did not work*/
 
     width: 6.44rem;
     height: 6.4rem;
@@ -115,13 +115,9 @@ a.create-orphanage:hover {
 
 }
 
-.leaflet-container { 
+.leaflet-container * { 
 
     font: 700 2rem/1 'Nunito', sans-serif;
     z-index: 5; /*position relative enable z-index option*/
 }
 
-.leaflet-popup-content { 
-
-    font: 700 2rem/1 'Nunito', sans-serif;
-}
