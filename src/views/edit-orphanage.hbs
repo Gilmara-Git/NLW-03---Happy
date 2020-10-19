@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="pt_BR">
+  <head>
+
+         
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Editar um orfanato | Happy</title>
+    <link rel="shortcut icon" href="/images/logo-icon.png" />
+    <link rel="stylesheet" href="/css/main.css" />
+    <link rel="stylesheet" href="/css/animations.css" />
+    <link rel="stylesheet" href="/css/page-create-orphanage.css" />
+    <link rel="stylesheet" href="/css/sidebar.css" />
+    <link rel="stylesheet" href="/css/map.css" />
+    <link rel="stylesheet" href="/css/form.css" />
+    <link rel="stylesheet" href="/css/buttons.css">
+    <link rel="stylesheet" href="/css/edit-orphanage.css">
+
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+      integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+      crossorigin=""
+    />
+
+    <!-- Make sure you put this AFTER Leaflet's CSS -->
+    <script
+      src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+      integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+      crossorigin=""
+    ></script>
+  </head>
+
+  <body>
+    <div id="page-create-orphanage">
+      <aside class="animate-right sidebar">
+        <img src="/images/map-marker.svg" alt="Happy" />
+
+        <footer>
+          <button onclick="history.back();">
+            <img src="/images/arrow-back.svg" alt="Voltar" />
+          </button>
+        </footer>
+      </aside>
+
+      <main class="animate-appear with-sidebar">
+
+        
+        <form action="/orphanage?_method=PUT" method="POST" onsubmit="validateLatLng(event)">
+          <fieldset>
+            <legend>Dados</legend>
+            <div class="map-container">
+              <div id="mapid"></div>
+              <input type="hidden" name="lat" value="{{orphanage.lat}}">
+              <input type="hidden" name="lng" value="{{orphanage.lng}}">
+
+              <footer>
+                <a href="#" id="select-point"
+                  >Clique no mapa para adicionar a localização</a
+                >
+              </footer>
+            </div>
+
+            <div class="input-block">
+              <label for="name">Nome</label>
+              <input id="name" type="text" name="name"required value="{{orphanage.name}}"/> 
+            </div>
+
+            <div class="input-block">
+              <label for="about">Sobre<span>Máximo 300 caracteres</span></label>
+              <textarea id="about" name="about" required >{{orphanage.about}}</textarea>
+            </div>
+
+            <div class="input-block">
+              <label for="whatsapp">Número de Whatsapp</label>
+              <input id="whatsapp" type="text" name="whatsapp" required value="{{orphanage.whatsapp}}"/>
+            </div>
+
+            <div class="input-block images">
+              <label for="images">Foto</label>
+
+              <div class="images-upload" id="images">
+
+                  <div class="new-upload">
+                    {{#each orphanage.images}}
+                    <input name="images" placeholder="Cole o link da foto aqui." required  type="url" 
+                    value="{{this}}">
+                    <span onclick="deletePhotoField(event)">
+                      
+                      <img src="/images/remove-file.svg" alt="Remover foto">
+                      
+                    </span>
+                    {{/each}}
+                    
+                </div>
+            </div>
+
+              <button onclick="addPhotoField()" type="button">
+                <img src="/images/add-file.svg" />
+              </button>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Visitação</legend>
+
+            <div class="input-block">
+              <label for="instructions">Instruções</label>
+              <textarea id="instructions" name="instructions" required>{{orphanage.instructions}}</textarea>
+            </div>
+
+            <div class="input-block">
+              <label for="opening_hours">Horários das visitas</label>
+              <input id="opening_hours" type="text" name="opening_hours" required value="{{orphanage.opening_hours}}"/>
+            </div>
+
+            <div class="input-block">
+              <label for="open_on_weekends">Atende fim de semana?</label>
+              <input
+                type="hidden"
+                id="open_on_weekends"
+                name="open_on_weekends"
+                value="1" required
+                value="{{orphanage.open_on_weekends}}"
+              />
+              <div class="button-select">
+                <button data-value ="1" onclick="toggleSelect(event)" type="button" class="active">Sim</button>
+                <button data-value ="0" onclick="toggleSelect(event)" type="button">Não</button>
+              </div>
+
+              <input type="hidden" name="id" value="{{orphanage.id}}">
+                
+                <button type="submit" class="primary-button">Salvar</button>
+                <button type="submit" class="primary-button delete" form="delete" onclick="deleteForm(event)">Deletar</button>
+          </form> 
+
+            </div>
+          </fieldset>
+
+        <form id="delete" action="/orphanage?_method=DELETE" method="POST">
+          <input type="hidden" name="id" value="{{orphanage.id}}">
+        </form>
+
+             </main>
+
+        
+    
+       </div>
+    <script src="/scripts/edit-orphanage.js"></script>
+    <script src="/scripts/delete-orphanage.js"></script>
+  </body>
+</html>
+

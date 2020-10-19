@@ -13,6 +13,7 @@
     align-items: center;
     justify-content: center;
     transition: background-color 0.2s;
+    text-decoration: none; 
 
 }
 
@@ -20,6 +21,15 @@
 .primary-button:hover {
 
     background: #36CF82;
+}
+
+.primary-button.delete {
+
+    background-color: coral;
+}
+.primary-button.delete:hover {
+
+    background-color: rgb(130, 39, 16);
 }
 
 .primary-button img {

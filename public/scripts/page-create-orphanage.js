@@ -3,7 +3,10 @@
 const map = L.map('mapid').setView([-27.2143428,-49.6388383], 15); // this is our map (setview has latitude, longitude, zoom)
 
 //create and add titeLayer 
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png')
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+})
 .addTo(map)
 
  const icon = L.icon({
@@ -60,7 +63,7 @@ function deletePhotoField(event){
   const span = event.currentTarget
   const fieldsContainer = document.querySelectorAll('.new-upload')  
 
-  console.log(fieldsContainer)
+  //console.log(fieldsContainer)
   if(fieldsContainer.length < 2 ) {
     
     span.parentNode.children[0].value = ""; // this is cleaning the new-upload 1st child
@@ -91,4 +94,20 @@ function toggleSelect(event) {
         input.value = button.dataset.value
     
      
+}
+
+
+function validateLatLng(event) { 
+    console.log(event)
+    const lat = document.querySelector('[name=lat]').value
+    const lng = document.querySelector('[name=lng]').value
+    console.log(lat)  
+    console.log(lng)
+    
+    if(lat=="" && lng ==""){  
+        event.preventDefault(); // Prevent form submission
+        alert("Por favor marque um ponto no mapa indicando a localização do orfanato.")
+   
+    }
+  
 }

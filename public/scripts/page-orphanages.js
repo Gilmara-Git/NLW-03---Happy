@@ -3,7 +3,9 @@
 const map = L.map('mapid').setView([-27.2143428,-49.6388383], 15); // this is our map (setview has latitude, longitude, zoom)
 
 //create and add titeLayer 
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png')
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+})
 .addTo(map)
 
 
@@ -32,7 +34,7 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png')
 
 
  const orphanagesSpan = document.querySelectorAll('.orphanages span')
- 
+ //console.log(orphanagesSpan)
  //const spans = document.querySelectorAll('.orphanages span')  
 //  for (let span of spans){    
 //         const orphanage = {
@@ -54,6 +56,7 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png')
             lat: span.dataset.lat, 
             lng: span.dataset.lng
         }
+        //console.log(orphanage)
         addMarker(orphanage)
         
    })

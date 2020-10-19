@@ -1,3 +1,4 @@
+
 const options = {
   dragging: false,
   touchZoom: false,
@@ -6,11 +7,16 @@ const options = {
   zoomControl: false,
 };
 
-//create map
-const map = L.map("mapid", options).setView([-27.2143428, -49.6388383], 15); // this is our map (setview has latitude, longitude, zoom)
+const lat  = document.querySelector('span[data-lat]').dataset.lat
+const lng  = document.querySelector('span[data-lng]').dataset.lng
+
+//create map - with lat and lng. It positions the map so, icon stay in the middle of the map
+const map = L.map("mapid", options).setView([lat, lng], 15); // this is our map (setview has latitude, longitude, zoom)
 
 //create and add titeLayer
-L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png").addTo(map);
+L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+  attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+}).addTo(map);
 
 // create ICON  - It is on the documentation how to do it.
 const icon = L.icon({
@@ -21,16 +27,16 @@ const icon = L.icon({
 });
 
 //create and ADD marker
-L.marker([-27.2143428, -49.6388383], { icon }).addTo(map);
+L.marker([lat, lng], { icon }).addTo(map);
 
 // Image Gallery
 
 function selectImage(event) {
-  //remove all Active classes from the buttons
-
+  
   const buttons = document.querySelectorAll(".images button");
   buttons.forEach(removeActiveClass);
 
+  //remove all Active classes from the buttons
   function removeActiveClass(button) {
     button.classList.remove("active");
   }
@@ -48,3 +54,5 @@ function selectImage(event) {
   // Add an Active Class to the current button
   button.classList.add("active");
 }
+
+

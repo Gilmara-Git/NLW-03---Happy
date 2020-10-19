@@ -1,0 +1,59 @@
+table.list-table {
+
+    padding: 8rem;
+    
+    width: 100%;
+    
+   
+}
+
+.list-table thead tr th {
+
+    
+    text-align: center;
+    color: #035959;
+    text-transform: uppercase;
+    
+
+}
+
+.list-table tbody tr td {
+
+    text-align: center; 
+    color:#00c7c7;
+    font-weight: bold;
+    
+
+
+}
+
+.list-table tbody tr {
+
+    width: 100%;
+    
+}
+
+.list-table tr {
+
+    border: 1px solid black;
+}
+
+th, td { 
+
+    border-bottom: 1px solid #d4d1d1;
+    padding: 2rem;
+}
+
+tbody tr td a { 
+
+    text-decoration: none;
+    color: #00c7c7;
+    border: 1px solid #035959; 
+    border-radius: 1rem;
+}
+
+tbody tr td a:hover {
+
+    color: #035959;
+    border: 1px solid #035959;
+}
