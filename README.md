@@ -36,6 +36,9 @@ The application purpose was bring to "devs" to the next level and to incentivate
 ## Instructor: 
 [Mayk Brito](https://github.com/maykbrito)
 
+## Link to Rocketseat repo:
+['Happy' application](https://github.com/rocketseat-education/nlw-03-discovery)
+
 ## Layout: 
 Developed by [Thiago Luchtenberg](https://www.instagram.com/tiagoluchtenberg/) and you can check it out on:
 
