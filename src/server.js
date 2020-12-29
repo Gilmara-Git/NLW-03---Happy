@@ -4,7 +4,9 @@ const path = require("path")
 const pages = require("./pages.js")
 const methodOverride =  require("method-override")
 
-server.listen(5500)
+server.listen(5500, function(){
+    console.log("Server is up")
+})
 
 server.use(express.static("public"))
 
